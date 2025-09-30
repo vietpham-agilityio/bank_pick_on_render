@@ -17,4 +17,7 @@ export default ({ env }) => ({
     nps: env.bool('FLAG_NPS', true),
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
+  cookie: {
+    secure: env.bool('ADMIN_COOKIE_SECURE', false), // 👈 force allow cookies over HTTP
+  },
 });
