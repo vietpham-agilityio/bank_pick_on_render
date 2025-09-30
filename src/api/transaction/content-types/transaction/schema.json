@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "singularName": "transaction",
+    "pluralName": "transactions",
+    "displayName": "Transaction"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sender_user_id": {
+      "type": "string",
+      "required": true
+    },
+    "sender_card_id": {
+      "type": "string",
+      "required": true
+    },
+    "receiver_user_id": {
+      "type": "string",
+      "required": true
+    },
+    "receiver_card_id": {
+      "type": "string",
+      "required": true
+    },
+    "receiver_balance_before": {
+      "type": "decimal",
+      "required": true
+    },
+    "receiver_balance_after": {
+      "type": "decimal",
+      "required": true
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "fee_amount": {
+      "type": "decimal",
+      "required": false,
+      "default": 2
+    },
+    "total_amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "transaction_status": {
+      "type": "string"
+    },
+    "reference_no": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "sender_balance_after": {
+      "type": "decimal",
+      "required": true
+    },
+    "sender_balance_before": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}
