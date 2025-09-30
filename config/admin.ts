@@ -18,6 +18,6 @@ export default ({ env }) => ({
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
   cookie: {
-    secure: env.bool('ADMIN_COOKIE_SECURE', false), // 👈 force allow cookies over HTTP
+    secure:  false, // 👈 force allow cookies over HTTP
   },
 });

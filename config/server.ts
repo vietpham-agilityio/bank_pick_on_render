@@ -4,4 +4,6 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  url: env('RENDER_EXTERNAL_URL', `https://${process.env.RENDER_EXTERNAL_URL}`),
+  proxy: true, // <— important when behind Render proxy
 });
