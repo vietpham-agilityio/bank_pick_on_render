@@ -13,19 +13,19 @@
   "attributes": {
     "sender_user_id": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "sender_card_id": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "receiver_user_id": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "receiver_card_id": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "receiver_balance_before": {
       "type": "decimal",
@@ -68,6 +68,16 @@
     "sender_balance_before": {
       "type": "decimal",
       "required": true
+    },
+    "sender_relation_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "receiver_relation_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

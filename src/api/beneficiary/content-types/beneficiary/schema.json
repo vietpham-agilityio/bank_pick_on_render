@@ -11,11 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "users_permissions_user": {
+    "user": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "beneficiary"
+      "inversedBy": "beneficiaries"
     },
     "beneficiary_card_id": {
       "type": "string"

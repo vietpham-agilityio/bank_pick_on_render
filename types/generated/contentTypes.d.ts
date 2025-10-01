@@ -500,8 +500,8 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
-      'oneToOne',
+    user: Schema.Attribute.Relation<
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
   };
@@ -538,10 +538,6 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
   };
 }
 
@@ -574,13 +570,21 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     receiver_balance_before: Schema.Attribute.Decimal &
       Schema.Attribute.Required;
-    receiver_card_id: Schema.Attribute.String & Schema.Attribute.Required;
-    receiver_user_id: Schema.Attribute.String & Schema.Attribute.Required;
+    receiver_card_id: Schema.Attribute.String;
+    receiver_relation_id: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    receiver_user_id: Schema.Attribute.String;
     reference_no: Schema.Attribute.String;
     sender_balance_after: Schema.Attribute.Decimal & Schema.Attribute.Required;
     sender_balance_before: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    sender_card_id: Schema.Attribute.String & Schema.Attribute.Required;
-    sender_user_id: Schema.Attribute.String & Schema.Attribute.Required;
+    sender_card_id: Schema.Attribute.String;
+    sender_relation_id: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    sender_user_id: Schema.Attribute.String;
     total_amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
     transaction_status: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1047,13 +1051,13 @@ export interface PluginUsersPermissionsUser
   };
   attributes: {
     avatar: Schema.Attribute.Media<'images' | 'files'>;
-    beneficiary: Schema.Attribute.Relation<
-      'oneToOne',
+    beneficiaries: Schema.Attribute.Relation<
+      'oneToMany',
       'api::beneficiary.beneficiary'
     >;
     birth_date: Schema.Attribute.Date;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    card: Schema.Attribute.Relation<'oneToOne', 'api::card.card'>;
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::card.card'>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -1076,7 +1080,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    phone_number: Schema.Attribute.Integer;
+    phone_number: Schema.Attribute.String & Schema.Attribute.Required;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
