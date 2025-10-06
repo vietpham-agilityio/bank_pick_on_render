@@ -485,7 +485,11 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
     beneficiary_card_id: Schema.Attribute.String;
     beneficiary_user_id: Schema.Attribute.String;
     card_holder_name: Schema.Attribute.String & Schema.Attribute.Required;
-    card_number: Schema.Attribute.Integer & Schema.Attribute.Required;
+    card_number: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 16;
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
