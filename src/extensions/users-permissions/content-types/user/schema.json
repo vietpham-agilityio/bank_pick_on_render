@@ -83,7 +83,8 @@
     "cards": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::card.card"
+      "target": "api::card.card",
+      "mappedBy": "user"
     },
     "beneficiaries": {
       "type": "relation",

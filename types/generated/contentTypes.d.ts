@@ -522,15 +522,22 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
     bank_name: Schema.Attribute.String;
     card_brand: Schema.Attribute.String;
     card_holder_name: Schema.Attribute.String & Schema.Attribute.Required;
-    card_number: Schema.Attribute.Integer & Schema.Attribute.Required;
+    card_number: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 16;
+      }>;
     card_type: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     currency: Schema.Attribute.String & Schema.Attribute.DefaultTo<'USD'>;
-    cvv: Schema.Attribute.Integer & Schema.Attribute.Required;
+    cvv: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 4;
+      }>;
     expiry_date: Schema.Attribute.Date & Schema.Attribute.Required;
-    last_four_digits: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::card.card'> &
       Schema.Attribute.Private;
@@ -538,6 +545,10 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 

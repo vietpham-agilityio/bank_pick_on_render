@@ -11,20 +11,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "card_number": {
-      "type": "integer",
-      "required": true
-    },
     "card_holder_name": {
       "type": "string",
       "required": true
     },
     "expiry_date": {
       "type": "date",
-      "required": true
-    },
-    "cvv": {
-      "type": "integer",
       "required": true
     },
     "card_type": {
@@ -40,11 +32,24 @@
       "type": "string",
       "default": "USD"
     },
-    "last_four_digits": {
-      "type": "integer"
-    },
     "bank_name": {
       "type": "string"
+    },
+    "card_number": {
+      "type": "string",
+      "maxLength": 16,
+      "required": true
+    },
+    "cvv": {
+      "type": "string",
+      "maxLength": 4,
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "cards"
     }
   }
 }
