@@ -13,5 +13,12 @@ module.exports = ({ env }) => ({
         },
       },
     },
+    "users-permissions": {
+    config: {
+      register: {
+        allowedFields: ["phone_number"],
+      },
+    },
+  },
   });
   
