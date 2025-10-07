@@ -475,7 +475,7 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
     singularName: 'beneficiary';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     avatar: Schema.Attribute.Media<
@@ -519,7 +519,7 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
     singularName: 'card';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     balance: Schema.Attribute.Decimal;
@@ -564,7 +564,7 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
     singularName: 'transaction';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
