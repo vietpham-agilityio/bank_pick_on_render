@@ -11,22 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "sender_user_id": {
-      "type": "string",
-      "required": false
-    },
-    "sender_card_id": {
-      "type": "string",
-      "required": false
-    },
-    "receiver_user_id": {
-      "type": "string",
-      "required": false
-    },
-    "receiver_card_id": {
-      "type": "string",
-      "required": false
-    },
     "receiver_balance_before": {
       "type": "decimal",
       "required": true
@@ -80,6 +64,18 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "received_transactions"
+    },
+    "card_sender": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::card.card",
+      "inversedBy": "sender_card"
+    },
+    "card_receiver": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::card.card",
+      "inversedBy": "receiver_card"
     }
   }
 }

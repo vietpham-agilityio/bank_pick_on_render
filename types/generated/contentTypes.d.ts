@@ -546,6 +546,14 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::card.card'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    receiver_card: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::transaction.transaction'
+    >;
+    sender_card: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::transaction.transaction'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -568,6 +576,8 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
   };
   attributes: {
     amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    card_receiver: Schema.Attribute.Relation<'manyToOne', 'api::card.card'>;
+    card_sender: Schema.Attribute.Relation<'manyToOne', 'api::card.card'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -589,8 +599,6 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     receiver_balance_before: Schema.Attribute.Decimal &
       Schema.Attribute.Required;
-    receiver_card_id: Schema.Attribute.String;
-    receiver_user_id: Schema.Attribute.String;
     reference_no: Schema.Attribute.String;
     sender: Schema.Attribute.Relation<
       'manyToOne',
@@ -598,8 +606,6 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
     >;
     sender_balance_after: Schema.Attribute.Decimal & Schema.Attribute.Required;
     sender_balance_before: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    sender_card_id: Schema.Attribute.String;
-    sender_user_id: Schema.Attribute.String;
     total_amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
     transaction_status: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
