@@ -51,13 +51,13 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "cards"
     },
-    "sender_card": {
+    "sender_transaction": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::transaction.transaction",
       "mappedBy": "card_sender"
     },
-    "receiver_card": {
+    "receiver_transaction": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::transaction.transaction",

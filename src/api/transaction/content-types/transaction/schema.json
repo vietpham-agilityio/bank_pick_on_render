@@ -69,13 +69,13 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::card.card",
-      "inversedBy": "sender_card"
+      "inversedBy": "sender_transaction"
     },
     "card_receiver": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::card.card",
-      "inversedBy": "receiver_card"
+      "inversedBy": "receiver_transaction"
     }
   }
 }

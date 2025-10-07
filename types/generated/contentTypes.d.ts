@@ -546,11 +546,11 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::card.card'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    receiver_card: Schema.Attribute.Relation<
+    receiver_transaction: Schema.Attribute.Relation<
       'oneToMany',
       'api::transaction.transaction'
     >;
-    sender_card: Schema.Attribute.Relation<
+    sender_transaction: Schema.Attribute.Relation<
       'oneToMany',
       'api::transaction.transaction'
     >;
