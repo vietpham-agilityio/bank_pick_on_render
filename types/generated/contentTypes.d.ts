@@ -581,24 +581,24 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     notes: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
+    receiver: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     receiver_balance_after: Schema.Attribute.Decimal &
       Schema.Attribute.Required;
     receiver_balance_before: Schema.Attribute.Decimal &
       Schema.Attribute.Required;
     receiver_card_id: Schema.Attribute.String;
-    receiver_relation_id: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
     receiver_user_id: Schema.Attribute.String;
     reference_no: Schema.Attribute.String;
+    sender: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     sender_balance_after: Schema.Attribute.Decimal & Schema.Attribute.Required;
     sender_balance_before: Schema.Attribute.Decimal & Schema.Attribute.Required;
     sender_card_id: Schema.Attribute.String;
-    sender_relation_id: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
     sender_user_id: Schema.Attribute.String;
     total_amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
     transaction_status: Schema.Attribute.String;
@@ -1098,6 +1098,10 @@ export interface PluginUsersPermissionsUser
     phone_number: Schema.Attribute.String & Schema.Attribute.Required;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    received_transactions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::transaction.transaction'
+    >;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
       'manyToOne',

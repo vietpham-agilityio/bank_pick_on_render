@@ -99,7 +99,14 @@
     "transactions": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::transaction.transaction"
+      "target": "api::transaction.transaction",
+      "mappedBy": "sender"
+    },
+    "received_transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction",
+      "mappedBy": "receiver"
     }
   }
 }

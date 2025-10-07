@@ -69,15 +69,17 @@
       "type": "decimal",
       "required": true
     },
-    "sender_relation_id": {
+    "sender": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "transactions"
     },
-    "receiver_relation_id": {
+    "receiver": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "received_transactions"
     }
   }
 }
