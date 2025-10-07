@@ -95,6 +95,11 @@
     "phone_number": {
       "type": "string",
       "required": true
+    },
+    "transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction"
     }
   }
 }
