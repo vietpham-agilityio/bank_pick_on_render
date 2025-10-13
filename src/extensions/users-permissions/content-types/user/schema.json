@@ -88,9 +88,9 @@
     },
     "beneficiaries": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::beneficiary.beneficiary",
-      "mappedBy": "user"
+      "mappedBy": "users"
     },
     "phone_number": {
       "type": "string",

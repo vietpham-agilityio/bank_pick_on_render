@@ -482,8 +482,6 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    beneficiary_card_id: Schema.Attribute.String;
-    beneficiary_user_id: Schema.Attribute.String;
     card_holder_name: Schema.Attribute.String & Schema.Attribute.Required;
     card_number: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -504,8 +502,8 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
+    users: Schema.Attribute.Relation<
+      'manyToMany',
       'plugin::users-permissions.user'
     >;
   };
@@ -1073,7 +1071,7 @@ export interface PluginUsersPermissionsUser
   attributes: {
     avatar: Schema.Attribute.Media<'images' | 'files'>;
     beneficiaries: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::beneficiary.beneficiary'
     >;
     birth_date: Schema.Attribute.Date;
