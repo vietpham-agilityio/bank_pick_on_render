@@ -74,10 +74,10 @@
         "files"
       ]
     },
-    "job_title": {
+    "jobTitle": {
       "type": "string"
     },
-    "birth_date": {
+    "birthDate": {
       "type": "date"
     },
     "cards": {
@@ -92,7 +92,7 @@
       "target": "api::beneficiary.beneficiary",
       "mappedBy": "users"
     },
-    "phone_number": {
+    "phoneNumber": {
       "type": "string",
       "required": true
     },
@@ -102,7 +102,7 @@
       "target": "api::transaction.transaction",
       "mappedBy": "sender"
     },
-    "received_transactions": {
+    "receivedTransactions": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::transaction.transaction",

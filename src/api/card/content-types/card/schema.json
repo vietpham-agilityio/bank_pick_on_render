@@ -11,18 +11,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "card_holder_name": {
+    "cardHolderName": {
       "type": "string",
       "required": true
     },
-    "expiry_date": {
+    "expiryDate": {
       "type": "date",
       "required": true
     },
-    "card_type": {
+    "cardType": {
       "type": "string"
     },
-    "card_brand": {
+    "cardBrand": {
       "type": "string"
     },
     "balance": {
@@ -32,10 +32,10 @@
       "type": "string",
       "default": "USD"
     },
-    "bank_name": {
+    "bankName": {
       "type": "string"
     },
-    "card_number": {
+    "cardNumber": {
       "type": "string",
       "maxLength": 16,
       "required": true
@@ -51,17 +51,17 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "cards"
     },
-    "sender_transaction": {
+    "senderTransaction": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::transaction.transaction",
-      "mappedBy": "card_sender"
+      "mappedBy": "cardSender"
     },
-    "receiver_transaction": {
+    "receiverTransaction": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::transaction.transaction",
-      "mappedBy": "card_receiver"
+      "mappedBy": "cardReceiver"
     }
   }
 }

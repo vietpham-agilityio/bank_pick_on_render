@@ -482,8 +482,8 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    card_holder_name: Schema.Attribute.String & Schema.Attribute.Required;
-    card_number: Schema.Attribute.String &
+    cardHolderName: Schema.Attribute.String & Schema.Attribute.Required;
+    cardNumber: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 16;
@@ -497,7 +497,7 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
       'api::beneficiary.beneficiary'
     > &
       Schema.Attribute.Private;
-    nick_name: Schema.Attribute.String;
+    nickName: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -521,15 +521,15 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
   };
   attributes: {
     balance: Schema.Attribute.Decimal;
-    bank_name: Schema.Attribute.String;
-    card_brand: Schema.Attribute.String;
-    card_holder_name: Schema.Attribute.String & Schema.Attribute.Required;
-    card_number: Schema.Attribute.String &
+    bankName: Schema.Attribute.String;
+    cardBrand: Schema.Attribute.String;
+    cardHolderName: Schema.Attribute.String & Schema.Attribute.Required;
+    cardNumber: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 16;
       }>;
-    card_type: Schema.Attribute.String;
+    cardType: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -539,16 +539,16 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 4;
       }>;
-    expiry_date: Schema.Attribute.Date & Schema.Attribute.Required;
+    expiryDate: Schema.Attribute.Date & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::card.card'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    receiver_transaction: Schema.Attribute.Relation<
+    receiverTransaction: Schema.Attribute.Relation<
       'oneToMany',
       'api::transaction.transaction'
     >;
-    sender_transaction: Schema.Attribute.Relation<
+    senderTransaction: Schema.Attribute.Relation<
       'oneToMany',
       'api::transaction.transaction'
     >;
@@ -574,13 +574,13 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
   };
   attributes: {
     amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    card_receiver: Schema.Attribute.Relation<'manyToOne', 'api::card.card'>;
-    card_sender: Schema.Attribute.Relation<'manyToOne', 'api::card.card'>;
+    cardReceiver: Schema.Attribute.Relation<'manyToOne', 'api::card.card'>;
+    cardSender: Schema.Attribute.Relation<'manyToOne', 'api::card.card'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     currency: Schema.Attribute.String & Schema.Attribute.DefaultTo<'USD'>;
-    fee_amount: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<2>;
+    fee: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<2>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -593,18 +593,16 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    receiver_balance_after: Schema.Attribute.Decimal &
-      Schema.Attribute.Required;
-    receiver_balance_before: Schema.Attribute.Decimal &
-      Schema.Attribute.Required;
-    reference_no: Schema.Attribute.String;
+    receiverBalanceAfter: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    receiverBalanceBefore: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    referenceNo: Schema.Attribute.String;
     sender: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    sender_balance_after: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    sender_balance_before: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    total_amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    senderBalanceAfter: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    senderBalanceBefore: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    totalAmount: Schema.Attribute.Decimal & Schema.Attribute.Required;
     transaction_status: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1074,7 +1072,7 @@ export interface PluginUsersPermissionsUser
       'manyToMany',
       'api::beneficiary.beneficiary'
     >;
-    birth_date: Schema.Attribute.Date;
+    birthDate: Schema.Attribute.Date;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     cards: Schema.Attribute.Relation<'oneToMany', 'api::card.card'>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1087,7 +1085,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    job_title: Schema.Attribute.String;
+    jobTitle: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1099,10 +1097,10 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    phone_number: Schema.Attribute.String & Schema.Attribute.Required;
+    phoneNumber: Schema.Attribute.String & Schema.Attribute.Required;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    received_transactions: Schema.Attribute.Relation<
+    receivedTransactions: Schema.Attribute.Relation<
       'oneToMany',
       'api::transaction.transaction'
     >;

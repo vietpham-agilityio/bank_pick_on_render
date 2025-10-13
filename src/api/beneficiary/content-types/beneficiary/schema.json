@@ -17,7 +17,7 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "beneficiaries"
     },
-    "card_holder_name": {
+    "cardHolderName": {
       "type": "string",
       "required": true
     },
@@ -31,10 +31,10 @@
         "audios"
       ]
     },
-    "nick_name": {
+    "nickName": {
       "type": "string"
     },
-    "card_number": {
+    "cardNumber": {
       "type": "string",
       "maxLength": 16,
       "required": true
