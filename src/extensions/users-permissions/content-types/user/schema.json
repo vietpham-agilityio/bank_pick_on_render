@@ -90,7 +90,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::beneficiary.beneficiary",
-      "mappedBy": "users"
+      "mappedBy": "owners"
     },
     "phoneNumber": {
       "type": "string",
@@ -107,6 +107,12 @@
       "relation": "oneToMany",
       "target": "api::transaction.transaction",
       "mappedBy": "receiver"
+    },
+    "beneficiaryOf": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::beneficiary.beneficiary",
+      "mappedBy": "targets"
     }
   }
 }

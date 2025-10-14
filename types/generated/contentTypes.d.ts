@@ -482,12 +482,7 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    cardHolderName: Schema.Attribute.String & Schema.Attribute.Required;
-    cardNumber: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 16;
-      }>;
+    card: Schema.Attribute.Relation<'manyToOne', 'api::card.card'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -498,14 +493,18 @@ export interface ApiBeneficiaryBeneficiary extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     nickName: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    users: Schema.Attribute.Relation<
+    owners: Schema.Attribute.Relation<
       'manyToMany',
       'plugin::users-permissions.user'
     >;
+    publishedAt: Schema.Attribute.DateTime;
+    targets: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -522,6 +521,10 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
   attributes: {
     balance: Schema.Attribute.Decimal;
     bankName: Schema.Attribute.String;
+    beneficiaries: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::beneficiary.beneficiary'
+    >;
     cardBrand: Schema.Attribute.String;
     cardHolderName: Schema.Attribute.String & Schema.Attribute.Required;
     cardNumber: Schema.Attribute.String &
@@ -1069,6 +1072,10 @@ export interface PluginUsersPermissionsUser
   attributes: {
     avatar: Schema.Attribute.Media<'images' | 'files'>;
     beneficiaries: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::beneficiary.beneficiary'
+    >;
+    beneficiaryOf: Schema.Attribute.Relation<
       'manyToMany',
       'api::beneficiary.beneficiary'
     >;

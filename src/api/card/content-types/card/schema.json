@@ -62,6 +62,12 @@
       "relation": "oneToMany",
       "target": "api::transaction.transaction",
       "mappedBy": "cardReceiver"
+    },
+    "beneficiaries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::beneficiary.beneficiary",
+      "mappedBy": "card"
     }
   }
 }

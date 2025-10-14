@@ -11,15 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "users": {
+    "owners": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "inversedBy": "beneficiaries"
-    },
-    "cardHolderName": {
-      "type": "string",
-      "required": true
     },
     "avatar": {
       "type": "media",
@@ -34,10 +30,17 @@
     "nickName": {
       "type": "string"
     },
-    "cardNumber": {
-      "type": "string",
-      "maxLength": 16,
-      "required": true
+    "targets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "beneficiaryOf"
+    },
+    "card": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::card.card",
+      "inversedBy": "beneficiaries"
     }
   }
 }
