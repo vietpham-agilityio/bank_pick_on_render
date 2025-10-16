@@ -13,11 +13,11 @@
   "attributes": {
     "cardHolderName": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "expiryDate": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "cardType": {
       "type": "string"
@@ -38,12 +38,12 @@
     "cardNumber": {
       "type": "string",
       "maxLength": 16,
-      "required": true
+      "required": false
     },
     "cvv": {
       "type": "string",
       "maxLength": 4,
-      "required": true
+      "required": false
     },
     "user": {
       "type": "relation",

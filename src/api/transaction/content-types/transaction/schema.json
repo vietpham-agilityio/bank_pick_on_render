@@ -36,7 +36,7 @@
       "type": "string",
       "default": "USD"
     },
-    "transaction_status": {
+    "transactionStatus": {
       "type": "string"
     },
     "referenceNo": {

@@ -526,9 +526,8 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
       'api::beneficiary.beneficiary'
     >;
     cardBrand: Schema.Attribute.String;
-    cardHolderName: Schema.Attribute.String & Schema.Attribute.Required;
+    cardHolderName: Schema.Attribute.String;
     cardNumber: Schema.Attribute.String &
-      Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 16;
       }>;
@@ -538,11 +537,10 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     currency: Schema.Attribute.String & Schema.Attribute.DefaultTo<'USD'>;
     cvv: Schema.Attribute.String &
-      Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 4;
       }>;
-    expiryDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    expiryDate: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::card.card'> &
       Schema.Attribute.Private;
@@ -606,7 +604,7 @@ export interface ApiTransactionTransaction extends Struct.CollectionTypeSchema {
     senderBalanceAfter: Schema.Attribute.Decimal & Schema.Attribute.Required;
     senderBalanceBefore: Schema.Attribute.Decimal & Schema.Attribute.Required;
     totalAmount: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    transaction_status: Schema.Attribute.String;
+    transactionStatus: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
